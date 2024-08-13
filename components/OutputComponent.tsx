@@ -75,7 +75,7 @@ export default function Output({ apiresponse }: OutputProps) {
           <div className="flex justify-between">
             <div className="text-[#757575] text-[16px]">Synonims</div>
             <div className="text-[#A445ED] font-bold">
-              {outputData?.meanings[0].synonyms}
+              {outputData?.meanings?.[0]?.synonyms}
             </div>
           </div>
         </div>
@@ -90,7 +90,7 @@ export default function Output({ apiresponse }: OutputProps) {
         <div className="">
           <div className="text-[#757575] text-[16px]">Meaning</div>
           <ul className=" list-disc list-inside">
-            {outputData?.meanings[1].definitions.map((item, index) => (
+            {outputData?.meanings?.[1]?.definitions.map((item, index) => (
               <li key={index} className="text-[15px]">
                 {item.definition}
                 <div className="text-[#757575]">&quot;{item.example}&quot;</div>
