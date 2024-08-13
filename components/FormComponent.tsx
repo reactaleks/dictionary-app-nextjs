@@ -13,7 +13,7 @@ const initialState = {
 export default function Form() {
   const [state, formAction] = useFormState(getDictionaryData, initialState);
   return (
-    <div className="h-[90vh]">
+    <div className="h-[90vh] dark:bg-black">
       <form action={formAction}>
         <div className="relative w-[90vw] h-[48px] mx-auto flex items-center">
         <Input type="text" name="searchTerm" className="border w-full h-full relative rounded-2xl pl-4" />
