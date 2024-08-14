@@ -8,6 +8,7 @@ export default function MoonIcon({darkMode}:PropTypes) {
         width="22"
         height="22"
         viewBox="0 0 22 22"
+        className="w-[19.99px] h-[20px]"
       >
         <path
           fill="none"

@@ -44,8 +44,8 @@ interface License {
 export default function Output({ apiresponse }: OutputProps) {
   const outputData = apiresponse?.data[0];
 
-  if(outputData) {
-    console.log(outputData)
+  if (outputData) {
+    console.log(outputData);
     return (
       <div className="w-[90vw] mx-auto">
         <div className="flex justify-between items-center">
@@ -55,11 +55,11 @@ export default function Output({ apiresponse }: OutputProps) {
               {outputData?.phonetic}
             </div>
           </div>
-          <PlayButton data={outputData?.phonetics}/>
+          <PlayButton data={outputData?.phonetics} />
         </div>
         <div className="flex justify-between">
           <div className="w-[10%] text-[18px] font-bold">
-            {outputData?.meanings?.[0]?.partOfSpeech }
+            {outputData?.meanings?.[0]?.partOfSpeech}
           </div>
           <div className="w-[80%] flex items-center">
             <div className="w-full h-[1px] bg-[#979797] bg-opacity-15"></div>
@@ -69,7 +69,9 @@ export default function Output({ apiresponse }: OutputProps) {
           <div className="text-[#757575] text-[16px]">Meaning</div>
           <ul className=" list-disc list-inside">
             {outputData?.meanings?.[0]?.definitions.map((item, index) => (
-              <li key={index} className="text-[15px]">{item.definition} </li>
+              <li key={index} className="text-[15px]">
+                {item.definition}
+              </li>
             ))}
           </ul>
           <div className="flex justify-between">
@@ -93,12 +95,13 @@ export default function Output({ apiresponse }: OutputProps) {
             {outputData?.meanings?.[1]?.definitions.map((item, index) => (
               <li key={index} className="text-[15px]">
                 {item.definition}
+
                 <div className="text-[#757575]">&quot;{item.example}&quot;</div>
               </li>
             ))}
           </ul>
         </div>
-  
+
         <div className="">
           <div className="text-[#757575] underline"> Source</div>
           <div className="text-[2D2D2D]">
@@ -110,5 +113,4 @@ export default function Output({ apiresponse }: OutputProps) {
       </div>
     );
   }
-
 }
