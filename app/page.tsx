@@ -1,8 +1,12 @@
 import Form from "@/components/FormComponent";
+import Navigation from "@/components/NavComponent";
 export default function Home() {
   return (
-    <main className="min-h-screen">
-        <Form/>
-    </main>
+    <>
+      <Navigation />
+      <main className="min-h-screen ">
+        <Form />
+      </main>
+    </>
   );
 }
