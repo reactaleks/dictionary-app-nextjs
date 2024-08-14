@@ -13,13 +13,13 @@ const initialState = {
 export default function Form() {
   const [state, formAction] = useFormState(getDictionaryData, initialState);
   return (
-    <div className=" justify-between dark:bg-black w-[90vw] mx-auto">
+    <div className=" justify-between w-[90vw] xl:w-[50vw] mx-auto">
       <form action={formAction}>
         <div className="relative  h-[48px] md:h-[64px] flex items-center">
           <Input
             type="text"
             name="searchTerm"
-            className="border w-full h-full relative md:text-headings rounded-2xl pl-4 bg-[#F4F4F4] font-bold"
+            className="border w-full h-full relative md:text-headings rounded-2xl pl-4 bg-[#F4F4F4] dark:bg-[#1F1F1F] dark:border-[#1F1F1F] font-bold"
           />
           <button type="submit" className="absolute right-4">
             <svg

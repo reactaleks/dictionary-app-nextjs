@@ -3,7 +3,7 @@ import ThemeSwitch from "./ThemeSwitchComponent";
 import FontSwitch from "./FontSwitchComponenet";
 export default function Navigation() {
   return (
-    <nav className="h-[10vh] w-[90vw] mx-auto flex justify-between items-center">
+    <nav className="h-[10vh] w-[90vw] xl:w-[50vw] mx-auto flex justify-between items-center">
       <div className="w-[50%]">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ export default function Navigation() {
           </g>
         </svg>
       </div>
-      <div className="flex w-[50%] justify-between">
+      <div className="flex w-[50%] md:w-[30%] justify-between">
         <FontSwitch />
         <div className="w-[1px] h-[32px] bg-[#979797] bg-opacity-25 dark:bg-opacity-100"></div>
         <ThemeSwitch />

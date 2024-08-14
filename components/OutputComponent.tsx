@@ -47,7 +47,7 @@ export default function Output({ apiresponse }: OutputProps) {
   if (outputData) {
     console.log(outputData);
     return (
-      <div className="w-[90vw] mx-auto">
+      <div className=" mx-auto ">
         <div className="flex justify-between my-4 md:my-8 items-center">
           <div className="flex flex-col">
             <div className="text-[32px] md:text-headingl font-bold">
@@ -61,11 +61,11 @@ export default function Output({ apiresponse }: OutputProps) {
         </div>
 
         <div className="flex justify-between  my-4 md:my-8">
-          <div className="w-[10%] text-bodym md:text-headingm font-bold">
+          <div className="w-[10%] text-bodym md:text-headingm font-bold italic">
             {outputData?.meanings?.[0]?.partOfSpeech}
           </div>
           <div className="w-[80%] flex items-center">
-            <div className="w-full h-[1px] bg-[#979797] bg-opacity-15"></div>
+            <div className="w-full h-[1px] bg-[#979797] bg-opacity-15 dark:bg-opacity-50"></div>
           </div>
         </div>
 
@@ -75,7 +75,7 @@ export default function Output({ apiresponse }: OutputProps) {
           </div>
           <ul className=" list-disc list-inside">
             {outputData?.meanings?.[0]?.definitions.map((item, index) => (
-              <li key={index} className="text-[15px] md:text-bodym">
+              <li key={index} className="text-[15px] md:text-bodym mt-2 marker:text-main_purple">
                 {item.definition}
               </li>
             ))}
@@ -91,11 +91,11 @@ export default function Output({ apiresponse }: OutputProps) {
         </div>
 
         <div className="flex justify-between my-4 md:my-8">
-          <div className="w-[10%] text-bodym md:text-headingm font-bold">
+          <div className="w-[10%] text-bodym md:text-headingm font-bold italic">
             {outputData?.meanings?.[1]?.partOfSpeech}
           </div>
           <div className="w-[80%] flex items-center">
-            <div className="w-full h-[1px] bg-[#979797] bg-opacity-15"></div>
+            <div className="w-full h-[1px] bg-[#979797] bg-opacity-15 dark:bg-opacity-50"></div>
           </div>
         </div>
 
@@ -103,9 +103,9 @@ export default function Output({ apiresponse }: OutputProps) {
           <div className="text-main_gray text-[16px] my-4 md:my-8 md:text-headings">
             Meaning
           </div>
-          <ul className=" list-disc list-inside">
+          <ul className=" list-disc list-inside ">
             {outputData?.meanings?.[1]?.definitions.map((item, index) => (
-              <li key={index} className="text-[15px] md:text-bodym">
+              <li key={index} className="text-[15px] md:text-bodym mt-2 marker:text-main_purple">
                 {item.definition}
 
                 <div className="text-main_gray">&quot;{item.example}&quot;</div>
@@ -115,7 +115,7 @@ export default function Output({ apiresponse }: OutputProps) {
         </div>
 
         <div className="mb-16">
-          <div className="w-full h-[1px] bg-main_gray bg-opacity-25"></div>
+          <div className="w-full h-[1px] bg-main_gray bg-opacity-15 dark:bg-opacity-50"></div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between md:w-[60%]">
             <div className="text-main_gray underline mt-4 "> Source</div>
             <div className="text-[2D2D2D] text-bodys underline">
