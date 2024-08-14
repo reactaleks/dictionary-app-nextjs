@@ -10,7 +10,7 @@ export default function FontSwitch() {
   return (
     <div className="flex items-center w-[50%] justify-around">
       <Menu>
-        <MenuButton className="flex items-center w-full justify-around text-[14px] font-bold">
+        <MenuButton className="flex items-center w-full justify-around text-bodys md:text-bodym font-bold">
           {fontTitle}
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +26,7 @@ export default function FontSwitch() {
             />
       </svg>
         </MenuButton>
-        <MenuItems anchor="bottom" className="bg-white dark:bg-black dark:shadow-[#A445ED] dark:shadow-2xl text-[14px] w-[183px] h-[152px] flex flex-col justify-evenly py-5 px-6 rounded-2xl shadow-xl">
+        <MenuItems anchor="bottom" className="bg-white dark:bg-black dark:shadow-main_purple dark:shadow-2xl text-bodys md:text-bodym w-[183px] h-[152px] flex flex-col justify-evenly py-5 px-6 rounded-2xl shadow-xl">
           <MenuItem>
             <button
               onClick={() => 
@@ -35,7 +35,7 @@ export default function FontSwitch() {
                   setFontTitle('Sans Serif')
                 }
               }
-              className="block w-full text-left data-[focus]:text-[#A445ED] font-sans font-bold"
+              className="block w-full text-left data-[focus]:text-main_purple font-sans font-bold"
             >
               Sans Serif
             </button>
@@ -47,7 +47,7 @@ export default function FontSwitch() {
                 setFontTitle("Serif")
               }
               }
-              className="block w-full text-left data-[focus]:text-[#A445ED] font-serif font-bold "
+              className="block w-full text-left data-[focus]:text-main_purple font-serif font-bold "
             >
               Serif
             </button>
@@ -58,7 +58,7 @@ export default function FontSwitch() {
                 setFontTitle("Mono")
 
               }}
-              className="block w-full text-left data-[focus]:text-[#A445ED] font-mono font-bold "
+              className="block w-full text-left data-[focus]:text-main_purple font-mono font-bold "
             >
               Mono
             </button>

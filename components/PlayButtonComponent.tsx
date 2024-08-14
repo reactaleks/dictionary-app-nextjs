@@ -38,7 +38,7 @@ export default function PlayButton(data: string) {
         width="75"
         height="75"
         viewBox="0 0 75 75"
-        className="h-[48px] w-[48px]"
+        className="h-[48px] w-[48px] md:w-[75px] md:h-[75px]"
       >
         <g fill="#A445ED" fillRule="evenodd">
           <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />

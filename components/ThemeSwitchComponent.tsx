@@ -34,7 +34,7 @@ export default function ThemeSwitch() {
       <Switch
         checked={enabled}
         onChange={changeTheme}
-        className={`group relative flex h-[20px] w-[40px] cursor-pointer rounded-full bg-[#979797] dark:bg-[#A445ED]  p-1 transition-colors duration-200 ease-in-out focus:outline-none data-[focus]:outline-1`}
+        className={`group relative flex h-[20px] w-[40px] cursor-pointer rounded-full bg-[#979797] dark:bg-main_purple  p-1 transition-colors duration-200 ease-in-out focus:outline-none data-[focus]:outline-1`}
       >
         <span
           aria-hidden="true"

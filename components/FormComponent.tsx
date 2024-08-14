@@ -2,7 +2,7 @@
 
 import { getDictionaryData } from "@/components/ServerActions";
 import { useFormState } from "react-dom";
-import { Input } from '@headlessui/react'
+import { Input } from "@headlessui/react";
 
 import Output from "./OutputComponent";
 
@@ -13,16 +13,35 @@ const initialState = {
 export default function Form() {
   const [state, formAction] = useFormState(getDictionaryData, initialState);
   return (
-    <div className="h-[90vh] dark:bg-black">
+    <div className=" justify-between dark:bg-black w-[90vw] mx-auto">
       <form action={formAction}>
-        <div className="relative w-[90vw] h-[48px] mx-auto flex items-center">
-        <Input type="text" name="searchTerm" className="border w-full h-full relative rounded-2xl pl-4" />
-        <button type="submit" className="absolute right-4"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18"><path fill="none" stroke="#A445ED" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"/></svg></button>
-
+        <div className="relative  h-[48px] md:h-[64px] flex items-center">
+          <Input
+            type="text"
+            name="searchTerm"
+            className="border w-full h-full relative md:text-headings rounded-2xl pl-4 bg-[#F4F4F4] font-bold"
+          />
+          <button type="submit" className="absolute right-4">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+            >
+              <path
+                fill="none"
+                stroke="#A445ED"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="m12.663 12.663 3.887 3.887M1 7.664a6.665 6.665 0 1 0 13.33 0 6.665 6.665 0 0 0-13.33 0Z"
+              />
+            </svg>
+          </button>
         </div>
       </form>
 
-      <Output apiresponse={state}/>
+      <Output apiresponse={state} />
     </div>
   );
 }

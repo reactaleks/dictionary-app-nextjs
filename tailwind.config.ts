@@ -15,6 +15,19 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      fontSize: {
+        'headingl': '64px',
+        'headingm': '24px',
+        'headings': '20px',
+        'bodym': '18px',
+        'bodys': '14px' 
+      },
+      colors: {
+        'main_purple': '#A445ED',
+        'main_lightgray': '#E9E9E9',
+        'main_gray': '#757575'
+      }
+
     },
   },
   plugins: [],
