@@ -5,7 +5,9 @@ export default function Home() {
     <>
       <Navigation />
       <main className="min-h-screen ">
+
         <Form />
+
       </main>
     </>
   );

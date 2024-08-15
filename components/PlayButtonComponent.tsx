@@ -41,8 +41,8 @@ export default function PlayButton(data: string) {
         className="h-[48px] w-[48px] md:w-[75px] md:h-[75px]"
       >
         <g fill="#A445ED" fillRule="evenodd">
-          <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" />
-          <path d="M29 27v21l21-10.5z" />
+          <circle cx="37.5" cy="37.5" r="37.5" opacity=".25" className="hover:opacity-100"/>
+          <path d="M29 27v21l21-10.5z" className="fill-white"/>
         </g>
       </svg>
     </button>

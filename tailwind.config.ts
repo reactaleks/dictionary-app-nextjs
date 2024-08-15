@@ -25,7 +25,8 @@ const config: Config = {
       colors: {
         'main_purple': '#A445ED',
         'main_lightgray': '#E9E9E9',
-        'main_gray': '#757575'
+        'main_gray': '#757575',
+        'main_black': '#2D2D2D',
       }
 
     },

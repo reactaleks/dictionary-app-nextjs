@@ -1,25 +1,28 @@
 "use client";
 
 import { getDictionaryData } from "@/components/ServerActions";
-import { useFormState } from "react-dom";
 import { Input } from "@headlessui/react";
-
 import Output from "./OutputComponent";
+import { useActionState } from "react";
+import FormSkeleton from "./loading/FormSkeletonComponent";
 
 const initialState = {
   data: "",
 };
 
 export default function Form() {
-  const [state, formAction] = useFormState(getDictionaryData, initialState);
+  const [state, formAction, pending] = useActionState(getDictionaryData, initialState);
+
+  
   return (
-    <div className=" justify-between w-[90vw] xl:w-[50vw] mx-auto">
+    <div className=" justify-between w-[90vw] xl:w-[50vw] mx-auto" key='form-component'>
       <form action={formAction}>
         <div className="relative  h-[48px] md:h-[64px] flex items-center">
           <Input
             type="text"
             name="searchTerm"
-            className="border w-full h-full relative md:text-headings rounded-2xl pl-4 bg-[#F4F4F4] dark:bg-[#1F1F1F] dark:border-[#1F1F1F] font-bold"
+            className={`border w-full h-full relative md:text-headings rounded-2xl pl-4 data-[focus]:!outline-main_purple bg-[#F4F4F4] dark:bg-[#1F1F1F]  dark:border-[#1F1F1F]  font-bold`}
+            data-focus
           />
           <button type="submit" className="absolute right-4">
             <svg
@@ -40,8 +43,11 @@ export default function Form() {
           </button>
         </div>
       </form>
+      
+      {!pending ? <Output apiresponse={state} /> : <FormSkeleton/>}
+      
 
-      <Output apiresponse={state} />
+
     </div>
   );
 }
