@@ -16,3 +16,4 @@ Challenge is to build out this dictionary web app using the Free Dictionary API 
 NextJS
 Tailwind
 TypeScript
+HeadlessUI

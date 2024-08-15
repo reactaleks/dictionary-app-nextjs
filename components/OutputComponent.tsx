@@ -1,11 +1,20 @@
 import PlayButton from "./PlayButtonComponent";
+import Image from "next/image";
 
 interface OutputProps {
   apiresponse: {
     data: DictionaryEntry[];
   };
 }
-
+interface ErrorProps {
+  apiresponse: {
+    data: {
+      title: string;
+      message: string;
+      resolution:string;
+    }
+  }
+}
 interface DictionaryEntry {
   word: string;
   phonetic?: string; // Optional property for single phonetic representation
@@ -41,16 +50,14 @@ interface License {
   url: string;
 }
 
-export default function Output({ apiresponse }: OutputProps) {
-  const outputData = apiresponse?.data[0];
-
+function DataOutput({ apiresponse }: OutputProps) {
+  const outputData = apiresponse?.data?.[0];
   if (outputData) {
-    console.log(outputData);
     return (
       <div className=" mx-auto ">
         <div className="flex justify-between my-4 md:my-8 items-center">
           <div className="flex flex-col">
-            <div className="text-[32px] md:text-headingl font-bold">
+            <div className="text-[32px] text-main_black dark:text-white md:text-headingl font-bold">
               {outputData?.word}
             </div>
             <div className="text-bodys md:text-headingm text-main_purple font-bold">
@@ -61,7 +68,7 @@ export default function Output({ apiresponse }: OutputProps) {
         </div>
 
         <div className="flex justify-between  my-4 md:my-8">
-          <div className="w-[10%] text-bodym md:text-headingm font-bold italic">
+          <div className="w-[10%] text-bodym text-main_black dark:text-white md:text-headingm font-bold italic">
             {outputData?.meanings?.[0]?.partOfSpeech}
           </div>
           <div className="w-[80%] flex items-center">
@@ -74,41 +81,47 @@ export default function Output({ apiresponse }: OutputProps) {
             Meaning
           </div>
           <ul className=" list-disc list-inside">
-            {outputData?.meanings?.[0]?.definitions.map((item, index) => (
-              <li key={index} className="text-[15px] md:text-bodym mt-2 marker:text-main_purple">
+            {outputData?.meanings?.[0]?.definitions.slice(0, 5).map((item, index) => (
+              <li
+                key={index}
+                className="text-[15px] text-main_gray md:text-bodym mt-2 marker:text-main_purple"
+              >
                 {item.definition}
               </li>
             ))}
           </ul>
-          <div className="flex justify-between my-4 md:my-8 w-[80%] md:w-[50%] items-center">
+          <div className="flex justify-between my-4 md:my-8 h-auto items-center">
             <div className="text-main_gray text-[16px]  md:text-headings">
               Synonims
             </div>
-            <div className="text-main_purple md:text-headings font-bold">
-              {outputData?.meanings?.[0]?.synonyms}
+            <div className="text-main_purple md:text-headings font-bold w-full flex justify-around">
+              {outputData?.meanings?.[0]?.synonyms?.slice(0, 4).map((syn,index) => <div key={index}>{syn}</div>)}
             </div>
           </div>
         </div>
 
         <div className="flex justify-between my-4 md:my-8">
-          <div className="w-[10%] text-bodym md:text-headingm font-bold italic">
+          <div className="w-[10%] text-bodym text-main_black dark:text-white md:text-headingm font-bold italic">
             {outputData?.meanings?.[1]?.partOfSpeech}
           </div>
-          <div className="w-[80%] flex items-center">
+          <div className={`w-[80%] flex items-center ${outputData?.meanings?.[1]?.definitions == undefined ? 'hidden' : null}`}>
             <div className="w-full h-[1px] bg-[#979797] bg-opacity-15 dark:bg-opacity-50"></div>
           </div>
         </div>
 
-        <div className="my-4 md:my-8">
+        <div className={`my-4 md:my-8 ${outputData?.meanings?.[1]?.definitions == undefined ? 'hidden' : null}`}>
           <div className="text-main_gray text-[16px] my-4 md:my-8 md:text-headings">
             Meaning
           </div>
           <ul className=" list-disc list-inside ">
-            {outputData?.meanings?.[1]?.definitions.map((item, index) => (
-              <li key={index} className="text-[15px] md:text-bodym mt-2 marker:text-main_purple">
+            {outputData?.meanings?.[1]?.definitions.slice(0,5).map((item, index) => (
+              <li
+                key={index}
+                className="text-[15px] text-main_gray md:text-bodym mt-2 marker:text-main_purple"
+              >
                 {item.definition}
 
-                <div className="text-main_gray">&quot;{item.example}&quot;</div>
+                <div className="text-main_gray">{item.example != undefined ? '&quot;' + item.example + '&quot;' : null}  {item.example}</div>
               </li>
             ))}
           </ul>
@@ -118,11 +131,11 @@ export default function Output({ apiresponse }: OutputProps) {
           <div className="w-full h-[1px] bg-main_gray bg-opacity-15 dark:bg-opacity-50"></div>
           <div className="flex flex-col md:flex-row md:items-end md:justify-between md:w-[60%]">
             <div className="text-main_gray underline mt-4 "> Source</div>
-            <div className="text-[2D2D2D] text-bodys underline">
+            <div className="text-main_black dark:text-white text-bodys underline">
               <a
                 href={outputData?.sourceUrls[0]}
                 target="_blank"
-                className="flex justify-between"
+                className="flex justify-between items-center"
               >
                 {`${outputData?.sourceUrls[0]}`}
                 <svg
@@ -130,7 +143,7 @@ export default function Output({ apiresponse }: OutputProps) {
                   width="14"
                   height="14"
                   viewBox="0 0 14 14"
-                  className="w-[15px] h-[15px]"
+                  className="w-[15px] h-[15px] md:ml-2"
                 >
                   <path
                     fill="none"
@@ -147,5 +160,27 @@ export default function Output({ apiresponse }: OutputProps) {
         </div>
       </div>
     );
+  }
+}
+
+function ErrorOutput({ apiresponse }: ErrorProps) {
+  return (
+    <div className="h-[50vh] w-[75vw] xl:w-[50vw] my-auto mx-auto flex flex-col justify-center items-center text-center">
+      <div className="">
+        <Image src={'/assets/images/icon-sad-face.svg'} width={48} height={48} className="h-[64px] w-[64px]" alt="Sad face icon"/>
+      </div>
+      <div className="text-headings font-bold text-main_black dark:text-white my-4">{apiresponse.data.title}</div>
+      <div className="text-bodym text-main_gray">
+        {apiresponse.data.message + apiresponse.data.resolution}
+      </div>
+    </div>
+  );
+}
+
+export default function Output({ apiresponse }: OutputProps) {
+  if (apiresponse?.data?.message != undefined) {
+    return <ErrorOutput apiresponse={apiresponse} />;
+  } else {
+    return <DataOutput apiresponse={apiresponse} />;
   }
 }
