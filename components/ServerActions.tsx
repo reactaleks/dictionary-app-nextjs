@@ -6,13 +6,22 @@ export async function getDictionaryData(prevState: any, formData: FormData) {
     dictionarySearchTerm: formData.get("searchTerm"),
   };
   // Fetch data based on user search parameter
-  const dictionaryData = await fetch(
-    `https://api.dictionaryapi.dev/api/v2/entries/en/` +
-      `${rawFormData.dictionarySearchTerm}`
-  )
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
-  return {
-    data: dictionaryData,
-  };
+  if(rawFormData.dictionarySearchTerm != "") {
+    const dictionaryData = await fetch(
+      `https://api.dictionaryapi.dev/api/v2/entries/en/` +
+        `${rawFormData.dictionarySearchTerm}`
+    )
+      .then((res) => res.json())
+      .catch((err) => console.log(err));
+  
+      return {
+        data: dictionaryData,
+      };
+  } else {
+    return {
+      error: 'Field empty'
+    }
+  }
+
+  
 }
