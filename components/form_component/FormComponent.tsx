@@ -1,10 +1,10 @@
 "use client";
 
-import { getDictionaryData } from "@/components/ServerActions";
+import { getDictionaryData } from "../server_actions/ServerActions";
 import { Input } from "@headlessui/react";
-import Output from "./output_component/OutputComponent";
+import Output from "../output_component/OutputComponent";
 import { useActionState, useState, useEffect } from "react";
-import FormSkeleton from "./loading/FormSkeletonComponent";
+import FormSkeleton from "./loading_skeleton_component/FormSkeletonComponent";
 
 const initialState = {
   data: "",

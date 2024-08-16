@@ -1,4 +1,4 @@
-import Form from "@/components/FormComponent";
+import Form from "@/components/form_component/FormComponent";
 import Navigation from "@/components/nav_component/NavComponent";
 export default function Home() {
   return (
