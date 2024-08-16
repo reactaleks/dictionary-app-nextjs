@@ -34,14 +34,12 @@ export default function PlayButton(data: PronunciationData) {
   // Get audio url
   useEffect(() => {
     const getUrl = () => {
-      if (data.data != undefined) {
-        const dataArray = data.data;
-        for (let i = 0; i < dataArray.length; i++) {
-          const element = dataArray[i];
-          if (element.audio != "") {
-            return setAudioLink(element.audio);
-          }
-        }
+      const audioLink = data?.data?.find(element => element.audio !== "")?.audio;
+      if (audioLink) {
+        setAudioLink(audioLink);
+      } else {
+        // Handle the case where no element has a non-empty audio property
+        setAudioLink(""); // Set to an empty string or some default value
       }
     };
     getUrl();
@@ -64,7 +62,6 @@ export default function PlayButton(data: PronunciationData) {
     }
   };
 
-  console.log(typeof audioLink);
   return (
     <button
       className={`${audioLink == "" ? "cursor-not-allowed" : null}`}
@@ -72,7 +69,7 @@ export default function PlayButton(data: PronunciationData) {
     >
       {isPlaying ? (
         <div
-          className="inline-block h-[71px] w-[71px] animate-spin border-main_purple rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em]  motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          className="inline-block h-[48px] w-[48px] md:w-[75px] md:h-[75px] animate-spin border-main_purple rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em]  motion-reduce:animate-[spin_1.5s_linear_infinite]"
           role="status"
         ></div>
       ) : (
