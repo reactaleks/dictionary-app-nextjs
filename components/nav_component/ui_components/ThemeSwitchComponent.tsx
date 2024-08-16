@@ -3,7 +3,7 @@
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import { Switch } from "@headlessui/react";
-import MoonIcon from "./images/MoonIcon";
+import MoonIcon from "./ui_images/MoonIcon";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);

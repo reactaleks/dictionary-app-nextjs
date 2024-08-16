@@ -1,6 +1,6 @@
 "use client";
 import { useContext, useState } from "react";
-import { FontContext } from "./providers/ContextProviders";
+import { FontContext } from "@/components/providers/ContextProviders";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 
 export default function FontSwitch() {

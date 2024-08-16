@@ -1,5 +1,5 @@
 import Form from "@/components/FormComponent";
-import Navigation from "@/components/NavComponent";
+import Navigation from "@/components/nav_component/NavComponent";
 export default function Home() {
   return (
     <>

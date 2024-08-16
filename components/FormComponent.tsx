@@ -2,7 +2,7 @@
 
 import { getDictionaryData } from "@/components/ServerActions";
 import { Input } from "@headlessui/react";
-import Output from "./OutputComponent";
+import Output from "./output_component/OutputComponent";
 import { useActionState, useState, useEffect } from "react";
 import FormSkeleton from "./loading/FormSkeletonComponent";
 
