@@ -11,7 +11,7 @@ export default function DataOutput({ apiresponse }: OutputProps) {
 
   let dataSections = null;
   
-  const output = dataJoined ? dataSections = dataJoined.map((section, index:number) => {
+  const output = dataJoined ? dataSections = dataJoined.map((section:any, index:number) => {
     return (
       <div key={index}>
         <div className="flex justify-between  my-4 md:my-8">
