@@ -1,13 +1,14 @@
 'use client'
 
-import { ThemeProvider } from 'next-themes';
 import { useContext } from 'react';
-import { FontContext } from './ContextProviders';
+import { FontContext, ThemeContext } from './ContextProviders';
+
 export function ThemeSwitchProvider({ children }: { children: React.ReactNode }) {
+
 	return (
-		<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+		<div>
 			{children}
-		</ThemeProvider>
+		</div>
 	);
 }
 
@@ -19,3 +20,4 @@ export function FontsSwitchProvider({ children }: { children: React.ReactNode })
 		</div>
 	);
 }
+

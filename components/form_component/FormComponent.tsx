@@ -2,8 +2,9 @@
 
 import { getDictionaryData } from "../server_actions/ServerActions";
 import Output from "../output_component/OutputComponent";
-import { useActionState, useState, useEffect } from "react";
+import { useActionState, useState, useEffect, useContext } from "react";
 import FormSkeleton from "./loading_skeleton_component/FormSkeletonComponent";
+import { ThemeContext } from "../providers/ContextProviders";
 
 const initialState = {
   data: "",
@@ -15,11 +16,11 @@ export default function Form() {
     getDictionaryData,
     initialState
   );
+  const { theme } = useContext(ThemeContext);
   const [isEmpty, setIsEmpty] = useState(false);
 
   useEffect(() => {
     state.error == undefined ? setIsEmpty(false) : setIsEmpty(true);
-
   }, [state]);
 
   return (
@@ -28,34 +29,38 @@ export default function Form() {
       key="form-component"
     >
       <form action={formAction}>
-        <div className="relative  h-[48px] md:h-[64px] flex items-center">
+        <div className="relative  h-[48px] md:h-[64px] flex items-center ">
           <input
             type="text"
             name="searchTerm"
-            className={`border w-full h-full shadow ${
-              isEmpty
-                ? "border border-x-4 border-y-4 border-red-500 dark:border-red-600"
-                : "border-none dark:border-none"
-            } relative md:text-headings rounded-2xl pl-4  ${isEmpty ? 'focus:outline-transparent' : 'focus:outline-main_purple'} bg-[#F4F4F4] dark:bg-[#1F1F1F]  dark:border-[#1F1F1F]  font-bold`}
+            autoComplete="off"
+            className={` w-full h-full shadow focus:outline-none
+
+              ${
+                isEmpty
+                  ? "border border-x-2 border-y-2 border-red-500 focus:outline-transparent"
+                  : "border-none  focus:outline-main_purple"
+              } 
+              ${theme ? "bg-[#1F1F1F] border-[#1F1F1F] " : "bg-[#F4F4F4]  "}
+            relative md:text-headings rounded-2xl pl-4 font-bold `}
           />
           <button type="submit" className="absolute right-4">
             {pending ? (
               <div
                 className="inline-block h-[18px] w-[18px] animate-spin border-main_purple rounded-full border-4 border-solid border-current border-e-transparent align-[-0.125em]  motion-reduce:animate-[spin_1.5s_linear_infinite]"
                 role="status"
-              >
-              </div>
+              ></div>
             ) : (
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
                 height="18"
                 viewBox="0 0 18 18"
-                className={`${isEmpty ? 'fill-red-500' : null}`}
+                className={`${isEmpty ? "fill-red-500" : null}`}
               >
                 <path
                   fill="none"
-                  stroke={`${isEmpty ? '#FF5252' : '#A445ED'}`}
+                  stroke={`${isEmpty ? "#FF5252" : "#A445ED"}`}
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="1.5"
@@ -70,7 +75,7 @@ export default function Form() {
         </div>
       </form>
 
-      {!pending ? <Output apiresponse={state} /> : <FormSkeleton />}
+      {!pending ? <Output apiresponse={{data: state.data, error: state.error}} /> : <FormSkeleton />}
     </div>
   );
 }

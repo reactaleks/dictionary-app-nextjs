@@ -1,6 +1,6 @@
-"use client";
 import FontSwitch from "./ui_components/FontSwitchComponenet";
 import ThemeSwitch from "./ui_components/ThemeSwitchComponent";
+
 export default function Navigation() {
   return (
     <nav className="h-[10vh] w-[90vw] xl:w-[50vw] mx-auto flex justify-between items-center">

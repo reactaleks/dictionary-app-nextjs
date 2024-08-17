@@ -1,9 +1,11 @@
 "use client";
 import { useContext, useState } from "react";
-import { FontContext } from "@/components/providers/ContextProviders";
+import { FontContext, ThemeContext } from "@/components/providers/ContextProviders";
 
 export default function FontSwitch() {
   const { fontFamily, changeFontFamily } = useContext(FontContext);
+  const {theme} = useContext(ThemeContext);
+
   const [fontTitle, setFontTitle] = useState("Sans Serif");
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
@@ -31,8 +33,8 @@ export default function FontSwitch() {
       </button>
       <div
         className={` ${
-          isMenuVisible ? "absolute top-0 z-20" : "hidden"
-        } bg-white dark:bg-black dark:shadow-main_purple dark:shadow-2xl text-bodys md:text-bodym w-[183px] h-[152px] flex flex-col justify-evenly py-5 px-6 rounded-2xl shadow-xl`}
+          isMenuVisible ? "absolute top-6 z-20" : "hidden"
+        }  ${theme ? 'bg-black shadow-main_purple shadow-2xl'   : 'bg-white' } text-bodys md:text-bodym w-[183px] h-[152px] flex flex-col justify-evenly py-5 px-6 rounded-2xl shadow-xl`}
       >
         <div>
           <button

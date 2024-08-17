@@ -1,29 +1,29 @@
 "use client";
 
-import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import MoonIcon from "./ui_images/MoonIcon";
+import { ThemeContext } from "@/components/providers/ContextProviders";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false);
-  const { systemTheme, theme, setTheme } = useTheme();
-  const currentTheme = theme === "system" ? systemTheme : theme;
   const [enabled, setEnabled] = useState(false);
+  const {theme, changeTheme} = useContext(ThemeContext);
 
   useEffect(() => {
     setMounted(true);
+    changeTheme(theme)
   }, []);
 
   if (!mounted) {
     return null;
   }
 
-  const changeTheme = () => {
-    if (currentTheme == "dark") {
-      setTheme("light");
+  const switchTheme = () => {
+    if (theme == true) {
+      changeTheme(false);
       setEnabled(false);
     } else {
-      setTheme("dark");
+      changeTheme(true);
       setEnabled(true);
     }
   };
@@ -31,8 +31,8 @@ export default function ThemeSwitch() {
   return (
     <div className="flex w-[50%] justify-evenly items-center">
       <button
-        onClick={changeTheme}
-        className={`group relative flex h-[20px] w-[40px] cursor-pointer rounded-full bg-[#979797] dark:bg-main_purple  p-1 transition-colors duration-200 ease-in-out focus:outline-none data-[focus]:outline-1`}
+        onClick={switchTheme}
+        className={`group relative flex h-[20px] ${theme ? 'bg-main_purple' : null} w-[40px] cursor-pointer rounded-full bg-[#979797]  p-1 transition-colors duration-200 ease-in-out focus:outline-none data-[focus]:outline-1`}
       >
         <span
           aria-hidden="true"
