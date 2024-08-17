@@ -3,10 +3,11 @@ import DataOutput from "./data_ouput_components/DataOutput";
 
 export default function Output({ apiresponse }: OutputProps) {
   const errorMessage = apiresponse?.data?.message
-
+  
   if (errorMessage) {
     return <ErrorOutput apiresponse={apiresponse} />;
-  } else {
+  } 
+  else {
     return <DataOutput apiresponse={apiresponse} />;
   }
 }

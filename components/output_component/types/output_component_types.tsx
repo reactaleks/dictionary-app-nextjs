@@ -1,18 +1,18 @@
 // Data output types
 interface ErrorProps {
-    apiresponse: {
-      data: {
-        title: string;
-        message: string;
-        resolution:string;
-      }
-    }
-  }
-  interface OutputProps {
-    apiresponse: {
-      data: DictionaryEntry[];
-      error?: string | undefined;
-    }
+  apiresponse: {
+    data: {
+      title: string;
+      message: string;
+      resolution: string;
+    };
+  };
+}
+interface OutputProps {
+  apiresponse: {
+    data: DictionaryEntry[];
+    error?: string | undefined;
+  };
 }
 // Data types
 

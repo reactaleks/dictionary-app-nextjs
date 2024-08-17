@@ -1,7 +1,7 @@
 import PlayButton from "../ui_components/PlayButtonComponent";
 export default function DataOutput({ apiresponse }: OutputProps) {
     const outputData = apiresponse?.data?.[0];
-    if (outputData) {
+    if (outputData != undefined) {
       return (
         <div className=" mx-auto ">
           <div className="flex justify-between my-4 md:my-8 items-center">
