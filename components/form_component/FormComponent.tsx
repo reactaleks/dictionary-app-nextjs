@@ -1,7 +1,6 @@
 "use client";
 
 import { getDictionaryData } from "../server_actions/ServerActions";
-import { Input } from "@headlessui/react";
 import Output from "../output_component/OutputComponent";
 import { useActionState, useState, useEffect } from "react";
 import FormSkeleton from "./loading_skeleton_component/FormSkeletonComponent";
@@ -30,7 +29,7 @@ export default function Form() {
     >
       <form action={formAction}>
         <div className="relative  h-[48px] md:h-[64px] flex items-center">
-          <Input
+          <input
             type="text"
             name="searchTerm"
             className={`border w-full h-full shadow ${
