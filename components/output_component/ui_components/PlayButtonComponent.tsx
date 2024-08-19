@@ -44,11 +44,11 @@ export default function PlayButton(data: PronunciationData) {
     };
     getUrl();
 
+
     if(audioLink != "") {
       setAudio(new Audio(audioLink))
-
     }
-  }, [data]);
+  }, [audioLink]);
   // Check if audio is ended
   audio.onended = () => {
     setIsPlaying(false);
@@ -65,7 +65,6 @@ export default function PlayButton(data: PronunciationData) {
       }
     }
   };
-
   return (
     <button
       className={`${audioLink == "" ? "cursor-not-allowed" : null}`}
