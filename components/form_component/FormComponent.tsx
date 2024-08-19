@@ -15,6 +15,7 @@ export default function Form() {
     getDictionaryData,
     initialState
   );
+  
   const { theme } = useContext(ThemeContext);
   const [isEmpty, setIsEmpty] = useState(false);
 
