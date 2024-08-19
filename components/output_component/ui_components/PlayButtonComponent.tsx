@@ -28,9 +28,9 @@ interface License {
 }
 export default function PlayButton(data: PronunciationData) {
   const [audioLink, setAudioLink] = useState("");
+  const [audio, setAudio] = useState(new Audio)
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const audio = new Audio(audioLink);
   // Get audio url
   useEffect(() => {
     const getUrl = () => {
@@ -43,8 +43,12 @@ export default function PlayButton(data: PronunciationData) {
       }
     };
     getUrl();
-  }, [data]);
 
+    if(audioLink != "") {
+      setAudio(new Audio(audioLink))
+
+    }
+  }, [data]);
   // Check if audio is ended
   audio.onended = () => {
     setIsPlaying(false);
@@ -61,7 +65,8 @@ export default function PlayButton(data: PronunciationData) {
       }
     }
   };
-
+  console.log(typeof(audioLink))
+  console.log(audio)
   return (
     <button
       className={`${audioLink == "" ? "cursor-not-allowed" : null}`}

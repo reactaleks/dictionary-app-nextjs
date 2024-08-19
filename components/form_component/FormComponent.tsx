@@ -1,5 +1,3 @@
-"use client";
-
 import { getDictionaryData } from "../server_actions/ServerActions";
 import Output from "../output_component/OutputComponent";
 import { useActionState, useState, useEffect, useContext } from "react";

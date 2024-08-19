@@ -2,6 +2,7 @@ import PlayButton from "../ui_components/PlayButtonComponent";
 
 export default function DataOutput({ apiresponse }: OutputProps) {
   const outputData = apiresponse?.data;
+
   const data = outputData ? outputData.map((item, index) => {
         return item.meanings;
       })
@@ -12,6 +13,11 @@ export default function DataOutput({ apiresponse }: OutputProps) {
   let dataSections = null;
   
   const output = dataJoined ? dataSections = dataJoined.map((section:any, index:number) => {
+
+    if (!section || !Array.isArray(section.definitions) || !Array.isArray(section.synonyms)) {
+      return null; // Or handle the error differently
+    }
+
     return (
       <div key={index}>
         <div className="flex justify-between  my-4 md:my-8">
