@@ -15,7 +15,7 @@ export async function getDictionaryData(prevState: any, formData: FormData) {
       .catch((err) => console.log(err));
   
       return {
-        data: dictionaryData,
+        data: await dictionaryData,
       };
   } else {
     return {
