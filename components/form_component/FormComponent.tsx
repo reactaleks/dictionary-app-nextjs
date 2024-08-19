@@ -1,8 +1,9 @@
-import { getDictionaryData } from "../server_actions/ServerActions";
-import Output from "../output_component/OutputComponent";
+
 import { useActionState, useState, useEffect, useContext } from "react";
-import FormSkeleton from "./loading_skeleton_component/FormSkeletonComponent";
-import { ThemeContext } from "../providers/ContextProviders";
+import FormSkeleton from "@/components/form_component/loading_skeleton_component/FormSkeletonComponent";
+import { ThemeContext } from "@/components/providers/ContextProviders";
+import { getDictionaryData } from "@/components/server_actions/ServerActions";
+import Output from "@/components/output_component/OutputComponent";
 
 const initialState = {
   data: "",
@@ -72,7 +73,7 @@ export default function Form() {
           {isEmpty ? `Whoops, can't be empty...` : null}
         </div>
       </form>
-
+      
       {!pending ? <Output apiresponse={{data: state.data, error: state.error}} /> : <FormSkeleton />}
     </div>
   );
