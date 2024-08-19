@@ -65,8 +65,7 @@ export default function PlayButton(data: PronunciationData) {
       }
     }
   };
-  console.log(typeof(audioLink))
-  console.log(audio)
+
   return (
     <button
       className={`${audioLink == "" ? "cursor-not-allowed" : null}`}
