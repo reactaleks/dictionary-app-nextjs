@@ -8,9 +8,9 @@ export default function Home() {
   const {theme} = useContext(ThemeContext)
 
   return (
-    <div className={`min-h-screen ${theme ? 'bg-black text-white': 'bg-white text-main_black' }`}>
+    <div className={` ${theme ? 'bg-black text-white': 'bg-white text-main_black' } `}>
       <Navigation />
-      <main className="min-h-screen ">
+      <main className="">
 
         <Form />
 

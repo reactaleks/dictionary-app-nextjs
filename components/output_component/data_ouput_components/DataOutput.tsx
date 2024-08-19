@@ -90,7 +90,7 @@ export default function DataOutput({ apiresponse }: OutputProps) {
   ) : null;
 
   const sourceLink = outputData ? (
-    <div className="mb-16">
+    <div className="pb-16">
       <div className="w-full h-[1px] bg-main_gray bg-opacity-15 "></div>
       <div className="flex flex-col md:flex-row md:items-end md:justify-between md:w-[60%]">
         <div className="text-main_gray underline mt-4 "> Source</div>
